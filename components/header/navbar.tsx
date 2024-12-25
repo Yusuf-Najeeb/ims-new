@@ -8,6 +8,8 @@ import { MapPinCheck, PhoneCall, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
+import Logo from "../../public/logo.png";
 
 const menuVariants = {
   hidden: { x: "100%" },
@@ -45,7 +47,7 @@ export const Navbar = () => {
   return (
     <header className="">
       <div className="hidden md:flex items-center justify-between py-4 sm:px-8">
-        <p>logo</p>
+        <Image src={Logo.src} alt="IMS Company Logo" width={80} height={80} />
         <div className="flex items-center justify-between gap-8">
           <div className="flex items-center gap-2">
             <MapPinCheck className="w-8 h-8 text-[#F0A500]" />
@@ -61,7 +63,7 @@ export const Navbar = () => {
               +234 234 234 234
             </p>
           </div>
-          <Button className="bg-[#F0A500] hover:bg-[#F0A500]/70">
+          <Button className="bg-[#F0A500] text-[#000] hover:bg-[#F0A500]/70">
             Request Service
           </Button>
         </div>
@@ -89,22 +91,22 @@ export const Navbar = () => {
         </ul>
       </nav>
 
-      <div>
-        <div className="flex md:hidden">
-          <AnimatePresence>
-            {isOpen && (
-              <motion.div
-                onClick={() => setOpen(false)}
-                className="fixed inset-0 z-10 bg-background/50 backdrop-blur-sm"
-                variants={overlayVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-              />
-            )}
-          </AnimatePresence>
+      <div className="flex md:hidden">
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              onClick={() => setOpen(false)}
+              className="fixed inset-0 z-10 bg-background/50 backdrop-blur-sm"
+              variants={overlayVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+            />
+          )}
+        </AnimatePresence>
 
-          <AnimatePresence mode="wait">
+        <AnimatePresence mode="wait">
+          <div className="bg-[#2D4AF0] px-4 w-full flex items-center">
             {isOpen ? (
               <motion.div
                 key="close"
@@ -118,7 +120,7 @@ export const Navbar = () => {
                   size="icon"
                   onClick={() => setOpen(false)}
                 >
-                  <X className="w-8 h-8 text-[#2D4AF0]" />
+                  <X className="w-8 h-8 text-[#F0A500]" />
                 </Button>
               </motion.div>
             ) : (
@@ -134,48 +136,56 @@ export const Navbar = () => {
                   size="icon"
                   onClick={() => setOpen(true)}
                 >
-                  <Menu className="w-50 h-50 text-[#2D4AF0]" size={30} />
+                  <Menu className="w-50 h-50 text-[#F0A500]" size={30} />
                 </Button>
               </motion.div>
             )}
-          </AnimatePresence>
 
-          <AnimatePresence>
-            {isOpen && (
-              <motion.nav
-                variants={menuVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                transition={{ type: "spring", stiffness: 80 }}
-                className="fixed right-0 w-[85%] sm:w-[50%] h-screen bg-background/80 z-20 flex flex-col gap-y-8 drop-shadow-lg rounded-b-lg"
-              >
-                <nav className="md:hidden flex">
-                  <ul className="flex flex-col gap-8 py-4 px-4">
-                    {links.map((link) => {
-                      let currentPath;
-                      if (path === "/") {
-                        currentPath = link.href === "/";
-                      } else {
-                        currentPath = link.href === path;
-                      }
-                      return (
-                        <li
-                          key={link.title}
-                          className={`${
-                            currentPath && "bg-[#F0A500] font-semibold"
-                          } block p-1 px-4 py-2 hover:bg-[#F0A500]/70 rounded-md`}
-                        >
-                          <Link href={link.href}>{link.title}</Link>
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </nav>
-              </motion.nav>
-            )}
-          </AnimatePresence>
-        </div>
+            <Image
+              src={Logo.src}
+              alt="IMS Company Logo"
+              width={60}
+              height={60}
+              className="self-center mx-auto"
+            />
+          </div>
+        </AnimatePresence>
+
+        <AnimatePresence>
+          {isOpen && (
+            <motion.nav
+              variants={menuVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              transition={{ type: "spring", stiffness: 80 }}
+              className="fixed right-0 w-[85%] sm:w-[50%] h-screen bg-background/80 z-20 flex flex-col gap-y-8 drop-shadow-lg rounded-b-lg"
+            >
+              <nav className="md:hidden flex">
+                <ul className="flex flex-col gap-8 py-4 px-4">
+                  {links.map((link) => {
+                    let currentPath;
+                    if (path === "/") {
+                      currentPath = link.href === "/";
+                    } else {
+                      currentPath = link.href === path;
+                    }
+                    return (
+                      <li
+                        key={link.title}
+                        className={`${
+                          currentPath && "bg-[#F0A500] font-semibold"
+                        } block p-1 px-4 py-2 hover:bg-[#F0A500]/70 rounded-md`}
+                      >
+                        <Link href={link.href}>{link.title}</Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </nav>
+            </motion.nav>
+          )}
+        </AnimatePresence>
       </div>
     </header>
   );
