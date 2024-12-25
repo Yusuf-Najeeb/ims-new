@@ -1,8 +1,7 @@
-import { Navbar } from "@/components/header/navbar";
 export default function Home() {
   return (
     <main className="">
-      <Navbar />
+      <h1>LMFAO Home</h1>
     </main>
   );
 }
