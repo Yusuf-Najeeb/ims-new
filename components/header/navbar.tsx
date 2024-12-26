@@ -9,7 +9,8 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
-import Logo from "../../public/logo.png";
+import Logo from "../../public/logoDefault.svg";
+import LogoWhite from "../../public/logoWhite.svg";
 
 const menuVariants = {
   hidden: { x: "100%" },
@@ -47,7 +48,7 @@ export const Navbar = () => {
   return (
     <header className="">
       <div className="hidden md:flex items-center justify-between py-4 sm:px-8">
-        <Image src={Logo.src} alt="IMS Company Logo" width={80} height={80} />
+        <Image src={Logo.src} alt="IMS Company Logo" width={150} height={150} />
         <div className="flex items-center justify-between gap-8">
           <div className="flex items-center gap-2">
             <MapPinCheck className="w-8 h-8 text-[#F0A500]" />
@@ -91,7 +92,7 @@ export const Navbar = () => {
         </ul>
       </nav>
 
-      <div className="flex md:hidden">
+      <div className="flex md:hidden relative z-40">
         <AnimatePresence>
           {isOpen && (
             <motion.div
@@ -142,10 +143,10 @@ export const Navbar = () => {
             )}
 
             <Image
-              src={Logo.src}
+              src={LogoWhite.src}
               alt="IMS Company Logo"
-              width={60}
-              height={60}
+              width={150}
+              height={150}
               className="self-center mx-auto"
             />
           </div>
