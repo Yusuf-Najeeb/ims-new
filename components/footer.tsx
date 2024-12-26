@@ -7,19 +7,19 @@ import { Button } from "./ui/button";
 import { Facebook, Instagram, Twitter, Music2 } from "lucide-react";
 const Footer = () => {
   return (
-    <footer className="w-full py-4 text-[#fff] bg-[#2D4AF0]">
+    <footer className="w-full text-[#fff] bg-[#2D4AF0]">
       <div className="w-full relative flex flex-col md:flex-row items-center">
         <div className="w-full absolute inset-0 bg-[#F0A500]/10"></div>
         <Image
           src={MapImage.src}
           alt="Empty Map"
-          width={300}
-          height={300}
-          className="absolute w-full h-full"
+          width={500}
+          height={500}
+          className="absolute top-10 sm:top-0"
         />
 
-        <div className="relative z-20 px-4 sm:px-8 w-full flex flex-col md:flex-row md:justify-between md:items-center py-8">
-          <div className="flex flex-col items-start justify-start gap-y-4 md:w-[40%]">
+        <div className="relative z-20 px-4 sm:px-8 w-full flex flex-col md:flex-row md:justify-between md:items-center py-8 space-y-12 sm:space-y-0">
+          <div className="flex flex-col items-start justify-start gap-y-4 w-full md:w-[40%]">
             <Image
               src={Logo.src}
               alt="IMS Company Logo"
@@ -71,7 +71,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="md:w-[33%] space-y-2">
+          <div className="md:w-[45%] space-y-2">
             <h4 className="font-bold text-xl">
               Have a complaint or suggestion?
             </h4>
