@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <footer className="w-full text-[#fff] bg-[#2D4AF0]">
       <div className="w-full relative flex flex-col md:flex-row items-center">
-        <div className="w-full absolute inset-0 bg-[#F0A500]/10"></div>
+        <div className="w-full absolute inset-0 bg-[#F0A500]/30"></div>
         <Image
           src={MapImage.src}
           alt="Empty Map"
