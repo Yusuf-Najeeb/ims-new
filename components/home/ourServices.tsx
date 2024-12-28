@@ -9,9 +9,9 @@ import {
   HomeIcon,
   SparklesIcon,
   WifiIcon,
-  Printer,
   LampDesk,
 } from "lucide-react";
+import { IoBusinessOutline } from "react-icons/io5";
 import { cn } from "@/lib/utils";
 
 const residentialServices = [
@@ -175,7 +175,7 @@ export default function OurServices() {
                   : "text-gray-500 hover:text-gray-900"
               )}
             >
-              <Printer className="h-5 w-5" />
+              <IoBusinessOutline className="h-5 w-5" />
               Commercial
             </button>
           </div>

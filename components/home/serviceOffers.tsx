@@ -3,6 +3,10 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Unplug } from "lucide-react";
+import { TbSunElectricity } from "react-icons/tb";
+import { GiSoundOn } from "react-icons/gi";
+import { PiSecurityCamera } from "react-icons/pi";
+import { SiVitest } from "react-icons/si";
 
 interface Service {
   icon: React.ReactNode;
@@ -18,25 +22,25 @@ const services: Service[] = [
       "We offer top-notch electrical installation services for both commercial and residential projects. Our team of certified electricians ensures safe, efficient, and code-compliant installations.",
   },
   {
-    icon: <Unplug className="w-20 h-20 text-[#F0A500]" />,
+    icon: <TbSunElectricity className="w-20 h-20 text-[#F0A500]" />,
     title: "Solar System Installation",
     description:
       "Our solar system installation services provide sustainable energy solutions for your home or business. We design and install high-quality solar panels to help you reduce energy costs and minimize your carbon footprint.",
   },
   {
-    icon: <Unplug className="w-20 h-20 text-[#F0A500]" />,
+    icon: <GiSoundOn className="w-20 h-20 text-[#F0A500]" />,
     title: "Sound System Installation",
     description:
       "We specialize in sound system installations for various settings, including homes, offices, and commercial spaces. Our experts design and install high-fidelity audio systems tailored to your needs.",
   },
   {
-    icon: <Unplug className="w-20 h-20 text-[#F0A500]" />,
+    icon: <PiSecurityCamera className="w-20 h-20 text-[#F0A500]" />,
     title: "Security Systems",
     description:
       " Our security system installation services ensure the safety and security of your property. We provide state-of-the-art security solutions that offer peace of mind.",
   },
   {
-    icon: <Unplug className="w-20 h-20 text-[#F0A500]" />,
+    icon: <SiVitest className="w-20 h-20 text-[#F0A500]" />,
     title: "Electrical Maintenance",
     description:
       "Regular electrical maintenance is crucial to prevent issues and ensure the longevity of your electrical systems. Our team offers comprehensive maintenance services for both residential and commercial properties.",
@@ -75,8 +79,8 @@ export default function Offers() {
       <div className="md:hidden">
         <Slider {...sliderSettings}>
           {services.map((service, index) => (
-            <div key={index} className="px-2">
-              <div className="bg-white rounded-2xl shadow-md p-6 text-center">
+            <div key={index} className="px-1">
+              <div className="bg-white rounded-2xl shadow-md p-6 text-center flex flex-col items-center gap-y-2">
                 <div className="mb-4">{service.icon}</div>
                 <h3 className="text-xl font-bold mb-2">{service.title}</h3>
                 <p className="text-gray-600">{service.description}</p>
