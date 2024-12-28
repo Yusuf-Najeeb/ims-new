@@ -49,6 +49,7 @@ const services: Service[] = [
 
 export default function Offers() {
   const sliderSettings = {
+    autoplay: true,
     dots: true,
     infinite: true,
     speed: 500,

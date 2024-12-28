@@ -1,7 +1,7 @@
 import { Button } from "../ui/button";
 import Image from "next/image";
 import Link from "next/link";
-import Engineer from "../../public/engineer.jpg";
+import Engineer from "../../public/backgd.png";
 export default function AboutUs() {
   return (
     <section className="flex flex-col-reverse sm:flex-row items-center gap-x-8 gap-y-4 py-8 px-4 sm:px-8">
@@ -33,8 +33,8 @@ export default function AboutUs() {
         <Image
           src={Engineer.src}
           alt="Temporary"
-          width={100}
-          height={100}
+          width={1000}
+          height={1000}
           className="w-full h-full object-cover rounded-md"
         />
       </div>
