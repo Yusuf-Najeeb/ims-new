@@ -54,7 +54,7 @@ export default function Offers() {
   };
   return (
     <section className="py-8 px-4 sm:px-8 bg-[#F5F5F5]">
-      <h2 className="text-[#2D4AF0] text-2xl md:text-4xl font-bold leading-normal text-center mb-8">
+      <h2 className="text-[#111827] text-4xl font-bold leading-normal text-center mb-8">
         We Offer the Best Services
       </h2>
 
@@ -62,7 +62,7 @@ export default function Offers() {
         {services.map((service, index) => (
           <div
             key={index}
-            className="bg-white rounded-lg shadow-md p-6 text-center transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg flex flex-col items-center gap-y-4"
+            className="bg-white rounded-2xl shadow-md p-6 text-center transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg flex flex-col items-center gap-y-4"
           >
             <div className="mb-4">{service.icon}</div>
             <h3 className="text-xl font-bold mb-2">{service.title}</h3>
@@ -76,7 +76,7 @@ export default function Offers() {
         <Slider {...sliderSettings}>
           {services.map((service, index) => (
             <div key={index} className="px-2">
-              <div className="bg-white rounded-lg shadow-md p-6 text-center">
+              <div className="bg-white rounded-2xl shadow-md p-6 text-center">
                 <div className="mb-4">{service.icon}</div>
                 <h3 className="text-xl font-bold mb-2">{service.title}</h3>
                 <p className="text-gray-600">{service.description}</p>
