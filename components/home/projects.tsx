@@ -11,7 +11,6 @@ interface Projects {
 const sliderSettings = {
   autoplay: true,
   rtl: true,
-  dots: true,
   infinite: true,
   speed: 500,
   slidesToShow: 1,
@@ -45,8 +44,8 @@ const projects: Projects[] = [
 export default function Projects() {
   return (
     <section className="py-8 px-4 sm:px-8">
-      <h2 className="text-[#111827] text-4xl font-bold leading-normal text-center mb-8">
-        Projects
+      <h2 className="text-[#111827] text-4xl font-bold leading-normal mb-8 text-center">
+        Our Recent Projects
       </h2>
       <Slider {...sliderSettings}>
         {projects.map((project, index) => (
@@ -57,7 +56,7 @@ export default function Projects() {
                 alt={project.alt}
                 width={1000}
                 height={1000}
-                className="w-full h-full"
+                className="w-[90%] h-full rounded-2xl drop-shadow-md"
               />
             </div>
           </div>
