@@ -1,148 +1,212 @@
-import Image from "next/image";
-import Engineer from "../../public/engineer.jpg";
+"use client";
+
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  LightbulbIcon,
+  BoltIcon,
+  ShieldCheckIcon,
+  HomeIcon,
+  SparklesIcon,
+  WifiIcon,
+  Printer,
+  LampDesk,
+} from "lucide-react";
+import { cn } from "@/lib/utils";
+
+const residentialServices = [
+  {
+    title: "Power Distribution",
+    description:
+      "Our residential electrical designs ensure that your home receives a reliable power supply. We design electrical panels and circuits to meet the specific needs of your household.",
+    icon: BoltIcon,
+    color: "bg-amber-500",
+  },
+  {
+    title: "Lighting",
+    description:
+      "We create lighting plans that provide adequate illumination for every room, enhancing both functionality and aesthetics.",
+    icon: LightbulbIcon,
+    color: "bg-blue-500",
+  },
+  {
+    title: "Safety",
+    description:
+      "Safety is our top priority. Our designs include proper grounding, bonding, and circuit protection to prevent electrical hazards.",
+    icon: ShieldCheckIcon,
+    color: "bg-green-500",
+  },
+  {
+    title: "Energy Efficiency",
+    description:
+      "We incorporate energy-efficient lighting and appliances to help you save on energy bills and reduce your environmental footprint.",
+    icon: SparklesIcon,
+    color: "bg-teal-500",
+  },
+  {
+    title: "Smart Home Integration",
+    description:
+      "We offer smart home solutions, including automated lighting, security systems, and home automation, to make your home more convenient and secure.",
+    icon: HomeIcon,
+    color: "bg-purple-500",
+  },
+];
+
+const commercialServices = [
+  {
+    title: "Power Distribution Systems",
+    description:
+      "Our commercial electrical designs include comprehensive power distribution systems, ensuring that your building receives a reliable and efficient power supply.",
+    icon: BoltIcon,
+    color: "bg-amber-500",
+  },
+  {
+    title: "Lighting Systems",
+    description:
+      "We strategically place lighting fixtures to ensure optimal illumination throughout your commercial space, including backup emergency lighting systems.",
+    icon: LightbulbIcon,
+    color: "bg-blue-500",
+  },
+  {
+    title: "Safety Measures",
+    description:
+      "Proper grounding and bonding are essential to prevent fire hazards and electrical shocks. Our designs include safety measures to prevent overloaded circuits and arc faults.",
+    icon: ShieldCheckIcon,
+    color: "bg-green-500",
+  },
+  {
+    title: "Energy-Efficiency Measures",
+    description:
+      "We incorporate energy-efficient devices, fixtures, and equipment to reduce energy waste and lower operational costs.",
+    icon: SparklesIcon,
+    color: "bg-teal-500",
+  },
+  {
+    title: "Communication Systems",
+    description:
+      "Our designs include properly installed communication systems such as telephone systems, WiFi, broadband internet, and teleconferencing facilities.",
+    icon: WifiIcon,
+    color: "bg-indigo-500",
+  },
+  {
+    title: "Security Systems",
+    description:
+      "We integrate security systems, burglar alarms, and other important security measures to ensure the safety of your commercial space.",
+    icon: LampDesk,
+    color: "bg-red-500",
+  },
+];
+
+type ServiceCardProps = {
+  service: {
+    title: string;
+    description: string;
+    icon: any;
+    color: string;
+  };
+  index: number;
+};
+
+function ServiceCard({ service, index }: ServiceCardProps) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="group relative bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+    >
+      <div className="p-6">
+        <div
+          className={`inline-block p-3 ${service.color} rounded-lg text-white mb-4 group-hover:scale-110 transition-transform duration-300`}
+        >
+          <service.icon className="w-6 h-6" />
+        </div>
+        <h3 className="text-xl font-semibold text-gray-900 mb-2">
+          {service.title}
+        </h3>
+        <p className="text-gray-600">{service.description}</p>
+      </div>
+      <div
+        className={`h-1 ${service.color} w-0 group-hover:w-full transition-all duration-300 ease-out`}
+      />
+    </motion.div>
+  );
+}
 
 export default function OurServices() {
+  const [activeTab, setActiveTab] = useState<"residential" | "commercial">(
+    "residential"
+  );
+
   return (
-    <section className="flex flex-col items-center gap-x-8 gap-y-8 py-8 px-4 sm:px-8">
-      <div className="my-4">
-        <h2 className="text-[#2D4AF0] text-2xl md:text-4xl font-bold leading-normal text-center">
-          Our services
-        </h2>
-        <p className="text-xl text-[#333] text-center sm:leading-normal">
-          We provide a wide range of electrical engineering services tailored to
-          meet the needs of various industries.
-        </p>
-      </div>
-
-      <div className="flex flex-col md:flex-row items-center justify-center gap-4">
-        <div className="w-full md:w-[40%]">
-          <figure className="w-full h-full relative">
-            <Image
-              src={Engineer.src}
-              alt=""
-              width={100}
-              height={100}
-              className="w-full h-full block rounded-lg"
-            />
-            <figcaption className="absolute bottom-0 inset-x-0 bg-[#2D4AF0]/50 hover:bg-[#0ABFBC]/50 p-2 rounded-b-md transition">
-              <h3 className="text-center font-semibold text-white">
-                Residential Electrical Designs
-              </h3>
-            </figcaption>
-          </figure>
+    <section className="py-16 bg-gray-50">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold text-gray-900 mb-4">
+            Our Services
+          </h2>
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            We provide a wide range of electrical engineering services tailored
+            to meet the needs of various industries.
+          </p>
         </div>
 
-        <div className="w-full md:w-[50%]">
-          <ul className="flex flex-col gap-y-4">
-            <li>
-              <span className="font-semibold text-[#0ABFBC]">
-                Power Distribution:
-              </span>{" "}
-              Our residential electrical designs ensure that your home receives
-              a reliable power supply. We design electrical panels and circuits
-              to meet the specific needs of your household.
-            </li>
-            <li>
-              <span className="font-semibold text-[#0ABFBC]">Lighting:</span> We
-              create lighting plans that provide adequate illumination for every
-              room, enhancing both functionality and aesthetics.
-            </li>
-            <li>
-              <span className="font-semibold text-[#0ABFBC]">Safety:</span>{" "}
-              Safety is our top priority. Our designs include proper grounding,
-              bonding, and circuit protection to prevent electrical hazards.
-            </li>
-            <li>
-              <span className="font-semibold text-[#0ABFBC]">
-                Energy Efficiency:
-              </span>{" "}
-              We incorporate energy-efficient lighting and appliances to help
-              you save on energy bills and reduce your environmental footprint.
-            </li>
-            <li>
-              <span className="font-semibold text-[#0ABFBC]">
-                Smart Home Integration:
-              </span>{" "}
-              We offer smart home solutions, including automated lighting,
-              security systems, and home automation, to make your home more
-              convenient and secure. Custom Solutions: Every home is unique, and
-              we tailor our electrical designs to meet your specific
-              requirements and preferences.
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <div className="flex flex-col md:flex-row-reverse items-center justify-center gap-4">
-        <div className="w-full md:w-[40%]">
-          <figure className="w-full h-full relative">
-            <Image
-              src={Engineer.src}
-              alt=""
-              width={100}
-              height={100}
-              className="w-full h-full block rounded-lg"
-            />
-            <figcaption className="absolute bottom-0 inset-x-0 bg-[#2D4AF0]/50 hover:bg-[#0ABFBC]/50 p-2 rounded-b-md transition">
-              <h3 className="text-center font-semibold text-white">
-                Commercial Electrical Designs
-              </h3>
-            </figcaption>
-          </figure>
+        <div className="flex justify-center mb-8">
+          <div className="inline-flex rounded-lg border border-gray-200 bg-white p-1 mb-8">
+            <button
+              onClick={() => setActiveTab("residential")}
+              className={cn(
+                "inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium transition-colors",
+                activeTab === "residential"
+                  ? "bg-gray-100 text-gray-900"
+                  : "text-gray-500 hover:text-gray-900"
+              )}
+            >
+              <HomeIcon className="h-5 w-5" />
+              Residential
+            </button>
+            <button
+              onClick={() => setActiveTab("commercial")}
+              className={cn(
+                "inline-flex items-center gap-2 rounded-md px-4 py-2 text-sm font-medium transition-colors",
+                activeTab === "commercial"
+                  ? "bg-gray-100 text-gray-900"
+                  : "text-gray-500 hover:text-gray-900"
+              )}
+            >
+              <Printer className="h-5 w-5" />
+              Commercial
+            </button>
+          </div>
         </div>
 
-        <div className="w-full md:w-[50%]">
-          <ul className="flex flex-col gap-y-4">
-            <li>
-              <span className="font-semibold text-[#0ABFBC]">
-                Power Distribution Systems:
-              </span>{" "}
-              Our commercial electrical designs include comprehensive power
-              distribution systems, ensuring that your building receives a
-              reliable and efficient power supply. We incorporate electrical
-              panels, switchgear, and transformers to manage the flow of
-              electricity and convert voltage levels as needed.
-            </li>
-            <li>
-              <span className="font-semibold text-[#0ABFBC]">
-                Lighting Systems:
-              </span>{" "}
-              We We strategically place lighting fixtures to ensure optimal
-              illumination throughout your commercial space. Our designs also
-              include backup emergency lighting systems for added safety1.
-            </li>
-            <li>
-              <span className="font-semibold text-[#0ABFBC]">
-                Safety Measures:
-              </span>{" "}
-              Proper grounding and bonding are essential to prevent fire hazards
-              and electrical shocks. Our designs include safety measures to
-              prevent overloaded circuits and arc faults1.
-            </li>
-            <li>
-              <span className="font-semibold text-[#0ABFBC]">
-                Energy-Efficiency Measures:
-              </span>{" "}
-              We incorporate energy-efficient devices, fixtures, and equipment
-              to reduce energy waste and lower operational costs.
-            </li>
-            <li>
-              <span className="font-semibold text-[#0ABFBC]">
-                Communication Systems:
-              </span>{" "}
-              Our designs include properly installed communication systems such
-              as telephone systems, WiFi, broadband internet, and
-              teleconferencing facilities.
-            </li>
-            <li>
-              <span className="font-semibold text-[#0ABFBC]">
-                Security Systems:
-              </span>{" "}
-              We integrate security systems, burglar alarms, and other important
-              security measures to ensure the safety of your commercial space.
-            </li>
-          </ul>
-        </div>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+          >
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {activeTab === "residential"
+                ? residentialServices.map((service, index) => (
+                    <ServiceCard
+                      key={service.title}
+                      service={service}
+                      index={index}
+                    />
+                  ))
+                : commercialServices.map((service, index) => (
+                    <ServiceCard
+                      key={service.title}
+                      service={service}
+                      index={index}
+                    />
+                  ))}
+            </div>
+          </motion.div>
+        </AnimatePresence>
       </div>
     </section>
   );
