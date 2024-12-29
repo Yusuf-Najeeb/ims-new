@@ -87,7 +87,9 @@ export const Navbar = () => {
                     : "text-[#F5F5F5]"
                 } block p-1 px-2 sm:px-3 py-2 hover:bg-[#F0A500]/70 rounded-md`}
               >
-                <Link href={link.href}>{link.title}</Link>
+                <Link className="block" href={link.href}>
+                  {link.title}
+                </Link>
               </li>
             );
           })}
