@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Engineer from "../../public/engineer.jpg";
-import { PenIcon } from "lucide-react";
+import { NotepadText, CalendarClock, Wallet } from "lucide-react";
 
 export default function AboutIMS() {
   return (
@@ -51,29 +51,38 @@ export default function AboutIMS() {
           />
         </div>
       </div>
-      <div className="bg-[#F5F5F5] flex flex-col sm:flex-row justify-center items-center gap-8 py-8">
-        <div className="w-full sm:w-1/4 text-center">
-          <PenIcon className="mx-auto" />
-          <h3>Free Estimation</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus
-            provident deleniti beatae labore id quis eligendi
+      <div className="bg-[#F5F5F5] flex flex-col sm:flex-row justify-center items-center gap-14 py-8 mt-4">
+        <div className="w-full sm:w-1/4 flex flex-col items-center justify-center gap-y-2 text-center">
+          <NotepadText className="mx-auto w-16 h-16 text-[#F0A500]" />
+          <h3 className="text-[#111827] text-xl font-semibold">
+            Free Estimation
+          </h3>
+          <p className="text-[#4b5563]">
+            Our team is ready to assess your needs and provide you with an
+            accurate and no-obligation quote. Take the first step towards a
+            reliable and efficient power solution by contacting us today.
           </p>
         </div>
-        <div className="w-full sm:w-1/4 text-center">
-          <PenIcon className="mx-auto" />
-          <h3>Free Estimation</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus
-            provident deleniti beatae labore id quis eligendi
+        <div className="w-full sm:w-1/4 flex flex-col items-center justify-center gap-y-2 text-center">
+          <CalendarClock className="mx-auto w-16 h-16 text-[#F0A500]" />
+          <h3 className="text-[#111827] text-xl font-semibold">
+            24/7 Available
+          </h3>
+          <p className="text-[#4b5563]">
+            Whether it&apos;s a sudden power outage, a faulty security system,
+            or an urgent maintenance requirement, our team is just a call away,
+            ready to provide prompt and efficient solutions anytime.
           </p>
         </div>
-        <div className="w-full sm:w-1/4 text-center">
-          <PenIcon className="mx-auto" />
-          <h3>Free Estimation</h3>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus
-            provident deleniti beatae labore id quis eligendi
+        <div className="w-full sm:w-1/4 flex flex-col items-center justify-center gap-y-2 text-center">
+          <Wallet className="mx-auto w-16 h-16 text-[#F0A500]" />
+          <h3 className="text-[#111827] text-xl font-semibold">
+            Affordable Prices
+          </h3>
+          <p className="text-[#4b5563]">
+            We believe that top-quality electrical services should be accessible
+            to everyone. We offer competitive and affordable pricing for all our
+            services without compromising on quality or safety.
           </p>
         </div>
       </div>
