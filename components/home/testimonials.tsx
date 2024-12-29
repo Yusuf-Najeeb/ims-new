@@ -44,8 +44,8 @@ export default function Testimonials() {
   };
   return (
     <section className="py-8 px-4 sm:px-8 bg-[#F5F5F5]">
-      <h2 className="text-[#111827] text-4xl font-bold leading-normal text-center mb-8">
-        What Our Customers Say
+      <h2 className="text-[#111827] text-3xl sm:text-4xl font-bold text-center mb-8">
+        Our Customers Say
       </h2>
       <Slider {...sliderSettings}>
         {testimonials.map((testimony, index) => (
@@ -65,10 +65,12 @@ export default function Testimonials() {
                 className="w-[100px] h-[100px] object-cover object-top rounded-full"
               />
               <div>
-                <h4 className="text-[1rem] mb-2 text-[#F0A500]">
+                <h4 className="text-[1rem] mb-2 text-[#F0A500] italic">
                   {testimony.user}
                 </h4>
-                <p className="text-sm text-gray-500 -mt-2">{testimony.title}</p>
+                <p className="text-sm text-gray-500 -mt-2 italic">
+                  {testimony.title}
+                </p>
               </div>
             </div>
           </div>

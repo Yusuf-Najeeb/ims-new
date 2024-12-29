@@ -4,7 +4,11 @@ import Link from "next/link";
 import MapImage from "../public/map.png";
 import Logo from "../public/logoWhite.svg";
 import { Button } from "./ui/button";
-import { Facebook, Instagram, Twitter, Music2 } from "lucide-react";
+import { IoLogoTiktok } from "react-icons/io5";
+import { FaFacebook } from "react-icons/fa";
+import { AiFillInstagram } from "react-icons/ai";
+import { FaXTwitter } from "react-icons/fa6";
+
 const Footer = () => {
   return (
     <footer className="w-full text-[#fff] bg-[#2D4AF0]">
@@ -33,14 +37,14 @@ const Footer = () => {
             <p>We are located at Klen Plaza, Gwagwalada Abuja.</p>
 
             <div>
-              <h4>Socials:</h4>
+              <h4>We are on socials:</h4>
               <div className="flex space-x-2">
                 <Button variant="ghost" size="icon">
                   <Link
                     href="https://twitter.com/ims_electrical"
                     target="_blank"
                   >
-                    <Twitter />
+                    <FaXTwitter />
                   </Link>
                 </Button>
                 <Button variant="ghost" size="icon">
@@ -48,7 +52,7 @@ const Footer = () => {
                     href="https://twitter.com/ims_electrical"
                     target="_blank"
                   >
-                    <Facebook />
+                    <FaFacebook />
                   </Link>
                 </Button>
                 <Button variant="ghost" size="icon">
@@ -56,7 +60,7 @@ const Footer = () => {
                     href="https://twitter.com/ims_electrical"
                     target="_blank"
                   >
-                    <Instagram />
+                    <AiFillInstagram />
                   </Link>
                 </Button>
                 <Button variant="ghost" size="icon">
@@ -64,7 +68,7 @@ const Footer = () => {
                     href="https://twitter.com/ims_electrical"
                     target="_blank"
                   >
-                    <Music2 />
+                    <IoLogoTiktok />
                   </Link>
                 </Button>
               </div>

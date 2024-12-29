@@ -59,8 +59,8 @@ export default function Offers() {
   };
   return (
     <section className="py-8 px-4 sm:px-8 bg-[#F5F5F5]">
-      <h2 className="text-[#111827] text-4xl font-bold leading-normal text-center mb-8">
-        We Offer the Best Services
+      <h2 className="text-[#111827] text-4xl font-bold text-center mb-8">
+        We Offer
       </h2>
 
       <div className="hidden md:grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -6,8 +6,8 @@ export default function AboutUs() {
   return (
     <section className="flex flex-col-reverse sm:flex-row items-center gap-x-8 gap-y-4 py-8 px-4 sm:px-8">
       <div className="w-full sm:w-2/3">
-        <h2 className="text-[#111827] text-4xl font-bold leading-normal">
-          We are Leading Electrical Solutions
+        <h2 className="text-[#111827] text-center sm:text-left text-4xl font-bold">
+          About us
         </h2>
         <p className="leading-normal my-4 text-[#4b5563]">
           At IMS Electricals, we combine industry expertise with

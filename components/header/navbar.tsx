@@ -47,29 +47,29 @@ export const Navbar = () => {
   const path = usePathname();
   return (
     <header className="">
-      <div className="hidden md:flex items-center justify-between py-4 sm:px-8">
+      <div className="hidden md:flex items-center justify-between py-4 sm:px-4 md:px-8">
         <Image src={Logo.src} alt="IMS Company Logo" width={150} height={150} />
         <div className="flex items-center justify-between gap-8">
           <div className="flex items-center gap-2">
             <MapPinCheck className="w-8 h-8 text-[#F0A500]" />
-            <p>
+            <p className="text-sm text-[#111827]">
               <span className="text-slate-500">Address:</span> <br />
               Klen Plaza Gwagwalada, Abuja.
             </p>
           </div>
           <div className="flex items-center gap-2">
             <PhoneCall className="w-8 h-8 text-[#F0A500]" />
-            <p>
+            <p className="text-sm text-[#111827]">
               <span className="text-slate-500">Call Us:</span> <br />
               +234 234 234 234
             </p>
           </div>
-          <Button className="bg-[#F0A500] text-[#000] hover:bg-[#F0A500]/70">
+          <Button className="bg-[#F0A500] text-[#111827] hover:bg-[#F0A500]/70">
             Request Service
           </Button>
         </div>
       </div>
-      <nav className="hidden md:flex bg-[#2D4AF0]">
+      <nav className="hidden sticky top-0 z-40 md:flex bg-[#2D4AF0]">
         <ul className="flex items-center gap-8 py-4 px-4 sm:px-8">
           {links.map((link) => {
             let currentPath;
@@ -82,7 +82,9 @@ export const Navbar = () => {
               <li
                 key={link.title}
                 className={`${
-                  currentPath && "bg-[#F0A500] font-semibold"
+                  currentPath
+                    ? "bg-[#F0A500] font-semibold text-[#111827]"
+                    : "text-[#F5F5F5]"
                 } block p-1 px-2 sm:px-3 py-2 hover:bg-[#F0A500]/70 rounded-md`}
               >
                 <Link href={link.href}>{link.title}</Link>
@@ -92,6 +94,7 @@ export const Navbar = () => {
         </ul>
       </nav>
 
+      {/* Mobile menu */}
       <div className="flex md:hidden relative z-40">
         <AnimatePresence>
           {isOpen && (
