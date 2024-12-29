@@ -1,9 +1,13 @@
-export const Service = () => {
+"use client";
+import OurServices from "@/components/home/ourServices";
+import Offers from "@/components/home/serviceOffers";
+import AllServices from "@/components/services/allServices";
+export default function Service() {
   return (
-    <div>
-      <h1>Service Page</h1>
-    </div>
+    <main>
+      <OurServices />
+      <Offers />
+      <AllServices />
+    </main>
   );
-};
-
-export default Service;
+}

@@ -37,7 +37,7 @@ const Footer = () => {
             <p>We are located at Klen Plaza, Gwagwalada Abuja.</p>
 
             <div>
-              <h4>We are on socials:</h4>
+              <h4>Follow us on our socials:</h4>
               <div className="flex space-x-2">
                 <Button variant="ghost" size="icon">
                   <Link
@@ -118,7 +118,7 @@ const Footer = () => {
         </div>
       </div>
       <p className="relative bottom-0 w-full mx-auto mt-4 text-center">
-        All Right Reserved &copy; 2025
+        All Right Reserved &copy; IMS Electricals 2025
       </p>
     </footer>
   );

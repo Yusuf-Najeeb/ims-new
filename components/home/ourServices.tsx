@@ -148,7 +148,7 @@ export default function OurServices() {
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             We provide a wide range of electrical engineering services tailored
-            to meet the needs of various industries.
+            to meet the needs of various properties.
           </p>
         </div>
 
