@@ -35,7 +35,11 @@ const Footer = () => {
               getting better across Nigeria and beyond.
             </p>
             <p>We are located at Klen Plaza, Gwagwalada Abuja.</p>
-
+            <p>
+              Mail us at:{" "}
+              <Link href="mailto:G8aY3@example.com">G8aY3@example.com</Link>
+            </p>
+            <p>Call us at: +234 234 234 234</p>
             <div>
               <h4>Follow us on our socials:</h4>
               <div className="flex space-x-2">
