@@ -48,7 +48,15 @@ export const Navbar = () => {
   return (
     <header className="">
       <div className="hidden md:flex items-center justify-between py-4 sm:px-4 md:px-8">
-        <Image src={Logo.src} alt="IMS Company Logo" width={150} height={150} />
+        <Link href="/" className="cursor-pointer">
+          <Image
+            src={Logo.src}
+            alt="IMS Company Logo"
+            width={150}
+            height={150}
+            className="cursor-pointer"
+          />
+        </Link>
         <div className="flex items-center justify-between gap-8">
           <div className="flex items-center gap-2">
             <MapPinCheck className="w-8 h-8 text-[#F0A500]" />
@@ -146,14 +154,15 @@ export const Navbar = () => {
                 </Button>
               </motion.div>
             )}
-
-            <Image
-              src={LogoWhite.src}
-              alt="IMS Company Logo"
-              width={150}
-              height={150}
-              className="self-center mx-auto"
-            />
+            <Link href="/" className="cursor-pointer">
+              <Image
+                src={LogoWhite.src}
+                alt="IMS Company Logo"
+                width={150}
+                height={150}
+                className="self-center mx-auto"
+              />
+            </Link>
           </div>
         </AnimatePresence>
 
