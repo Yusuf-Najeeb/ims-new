@@ -7,7 +7,7 @@ export default function AllServices() {
       <div className="absolute inset-0 bg-[#F0A500]/10"></div>
       <h2 className="text-3xl sm:text-4xl font-bold mb-2">All Services</h2>
       <p className="text-xl font-semibold">Have a glance at all our services</p>
-      <div className="flex justify-center items-start gap-x-60 text-left my-8">
+      <div className="flex flex-col sm:flex-row justify-center items-start gap-x-60 gap-y-10 text-left my-8">
         <div>
           <h3 className="font-semibold">Residential Buildings</h3>
           <ul className="pl-6">

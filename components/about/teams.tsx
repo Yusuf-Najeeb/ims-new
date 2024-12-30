@@ -7,6 +7,7 @@ interface TeamCardProps {
   specialty: string;
   phone: string;
 }
+
 const teams: TeamCardProps[] = [
   {
     image: "/engineer.jpg",

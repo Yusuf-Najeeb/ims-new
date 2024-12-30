@@ -8,11 +8,9 @@ export default function Service() {
   return (
     <main>
       <PageHeader
-        title={"Services"}
-        description={
-          "We are committed to providing top-notch quality and reliability in all aspects of our services. This highlights the breadth and depth of our dedication to excellence in both technical and customer service"
-        }
-        image={"/backgd.png"}
+        title="We Love What We Do"
+        description="We are committed to providing top-notch quality and reliability in all aspects of our services. This highlights the breadth and depth of our dedication to excellence in both technical and customer service"
+        image="/backgd.png"
       />
       <OurServices />
       <Offers />
