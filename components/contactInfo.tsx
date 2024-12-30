@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "./ui/button";
+import { PhoneIncoming, Mail, MapPinHouse } from "lucide-react";
 
 export default function ContactUs() {
   return (
@@ -10,15 +11,26 @@ export default function ContactUs() {
         <div className="flex flex-col md:flex-row gap-8">
           <div className="md:w-1/2 space-y-4">
             <h3 className="text-xl font-semibold">Phone</h3>
-            <p>+234 234 234 234</p>
+
+            <p className="flex gap-2">
+              <PhoneIncoming className="w-6 h-6 text-[#F0A500]" />
+              <span>+234 234 234 234</span>
+            </p>
             <p>Available 24/7 for emergencies and inquiries.</p>
 
             <h3 className="text-xl font-semibold">Email</h3>
-            <p>info@yourcompany.com</p>
+            <p className="flex gap-2">
+              <Mail className="w-6 h-6 text-[#F0A500]" />
+              <span>info@yourcompany.com</span>
+            </p>
             <p>We respond to all emails within 24 hours.</p>
 
             <h3 className="text-xl font-semibold">Office Location</h3>
-            <p>Klen Plaza, Gwagwalada, Abuja</p>
+
+            <p className="flex gap-2">
+              <MapPinHouse className="w-6 h-6 text-[#F0A500]" />
+              <span>Klen Plaza, Gwagwalada, Abuja.</span>
+            </p>
             <p>
               Visit us during our office hours: Monday - Friday, 9 AM - 5 PM
             </p>
@@ -38,7 +50,6 @@ export default function ContactUs() {
           </div>
         </div>
 
-        {/* Request Free Estimate */}
         <div className="mt-8 text-center">
           <h2 className="text-2xl font-bold">Request a Free Estimate</h2>
           <p className="mt-2 sm:max-w-[80%] mx-auto">
