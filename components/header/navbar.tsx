@@ -4,10 +4,11 @@ import { useState } from "react";
 
 // *Third-party Imports
 import { motion, AnimatePresence } from "framer-motion";
+import { usePathname } from "next/navigation";
 import { MapPinCheck, PhoneCall, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import RequestModal from "@/components/RequestModal";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import Image from "next/image";
 import Logo from "../../public/logoDefault.svg";
 import LogoWhite from "../../public/logoWhite.svg";
@@ -44,6 +45,9 @@ const links = [
 
 export const Navbar = () => {
   const [isOpen, setOpen] = useState<boolean>(false);
+  const [serviceModal, setServiceModal] = useState<boolean>(false);
+
+  const handleServiceModal = () => setServiceModal(!serviceModal);
   const path = usePathname();
   return (
     <header className="">
@@ -72,7 +76,10 @@ export const Navbar = () => {
               +234 234 234 234
             </p>
           </div>
-          <Button className="bg-[#F0A500] text-[#111827] hover:bg-[#F0A500]/70">
+          <Button
+            onClick={handleServiceModal}
+            className="bg-[#F0A500] text-[#111827] hover:bg-[#F0A500]/70"
+          >
             Request Service
           </Button>
         </div>
@@ -202,6 +209,8 @@ export const Navbar = () => {
           )}
         </AnimatePresence>
       </div>
+
+      <RequestModal open={serviceModal} onClose={handleServiceModal} />
     </header>
   );
 };
