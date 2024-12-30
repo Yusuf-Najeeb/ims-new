@@ -1,6 +1,11 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import Link from "next/link";
+import RequestModal from "@/components/RequestModal";
+
 export default function Hero() {
+  const [isOpen, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   return (
     <section
       className="w-full h-[90vh] sm:h-[80vh] lg:h-screen relative flex flex-col justify-center px-4 sm:px-8 gap-8 bg-no-repeat bg-cover bg-center"
@@ -21,11 +26,14 @@ export default function Hero() {
         <Button
           variant="default"
           size="lg"
+          onClick={handleOpen}
           className="bg-[#F0A500] hover:bg-[#F0A500]/70 cursor-pointer text-[#000]"
         >
-          <Link href="/contact">Request Service</Link>
+          Request Service
         </Button>
       </div>
+
+      <RequestModal open={isOpen} onClose={handleClose} />
     </section>
   );
 }

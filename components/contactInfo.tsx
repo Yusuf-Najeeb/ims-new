@@ -1,8 +1,14 @@
-import React from "react";
+"use client";
+import { useState } from "react";
 import { Button } from "./ui/button";
+import EstimateModal from "@/components/estimateModal";
 import { PhoneIncoming, Mail, MapPinHouse } from "lucide-react";
 
 export default function ContactUs() {
+  const [isOpen, setOpen] = useState(false);
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   return (
     <section className="p-8 bg-[#F5F5F5] text-[#111827]">
       <div className="max-w-7xl mx-auto">
@@ -57,11 +63,15 @@ export default function ContactUs() {
             services. Provide us with some details about your project, and our
             team will get back to you with an accurate quote.
           </p>
-          <Button className="mt-4 inline-block bg-[#2D4AF0] text-white px-4 py-2 rounded-md hover:bg-[#2D4AF0]/70">
+          <Button
+            onClick={handleOpen}
+            className="mt-4 inline-block bg-[#2D4AF0] text-white px-4 py-2 rounded-md hover:bg-[#2D4AF0]/70"
+          >
             Request Free Estimate
           </Button>
         </div>
       </div>
+      <EstimateModal open={isOpen} onClose={handleClose} />
     </section>
   );
 }

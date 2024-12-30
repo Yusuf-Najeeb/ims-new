@@ -9,12 +9,12 @@ interface DialogProps {
   open: boolean;
   onClose: (open: boolean) => void;
 }
-export default function RequestModal({ open, onClose }: DialogProps) {
+export default function EstimateModal({ open, onClose }: DialogProps) {
   return (
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>What Can We Help You With today?</DialogTitle>
+          <DialogTitle>Tell Us About Your Project</DialogTitle>
         </DialogHeader>
         <form method="POST">
           <div>
