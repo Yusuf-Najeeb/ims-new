@@ -3,7 +3,6 @@ import Image from "next/image";
 import Link from "next/link";
 import MapImage from "../public/map.png";
 import Logo from "../public/logoWhite.svg";
-import { Button } from "./ui/button";
 import { IoLogoTiktok } from "react-icons/io5";
 import { FaFacebook } from "react-icons/fa";
 import { AiFillInstagram } from "react-icons/ai";
@@ -41,82 +40,109 @@ const Footer = () => {
             </p>
             <p>Call us at: +234 234 234 234</p>
             <div>
-              <h4>Follow us on our socials:</h4>
-              <div className="flex space-x-2">
-                <Button variant="ghost" size="icon">
+              <h4 className="text-xl font-semibold mb-3">
+                Follow Us on Social Media.
+              </h4>
+
+              <ul className="flex space-x-6">
+                <li>
                   <Link
                     href="https://twitter.com/ims_electrical"
                     target="_blank"
                   >
-                    <FaXTwitter />
+                    <FaXTwitter className="transition w-5 h-5 text-[#F5F5F5] hover:text-[#F0A500]" />
                   </Link>
-                </Button>
-                <Button variant="ghost" size="icon">
+                </li>
+                <li>
                   <Link
                     href="https://twitter.com/ims_electrical"
                     target="_blank"
                   >
-                    <FaFacebook />
+                    <FaFacebook className="transition w-5 h-5 text-[#F5F5F5] hover:text-[#F0A500]" />
                   </Link>
-                </Button>
-                <Button variant="ghost" size="icon">
+                </li>
+                <li>
                   <Link
                     href="https://twitter.com/ims_electrical"
                     target="_blank"
                   >
-                    <AiFillInstagram />
+                    <AiFillInstagram className="transition w-5 h-5 text-[#F5F5F5] hover:text-[#F0A500]" />
                   </Link>
-                </Button>
-                <Button variant="ghost" size="icon">
+                </li>
+                <li>
                   <Link
                     href="https://twitter.com/ims_electrical"
                     target="_blank"
                   >
-                    <IoLogoTiktok />
+                    <IoLogoTiktok className="transition w-5 h-5 text-[#F5F5F5] hover:text-[#F0A500]" />
                   </Link>
-                </Button>
-              </div>
+                </li>
+              </ul>
             </div>
           </div>
-
+          {/* Complaint Box */}
           <div className="md:w-[45%] space-y-2">
             <h4 className="font-bold text-xl">
-              Have a complaint or suggestion?
+              Have a Complaint or Suggestion?
             </h4>
-            <p className="text-sm">We are happy to hear from you</p>
-            <form className="text-[#000] flex flex-col gap-y-4" method="POST">
-              <div className="flex flex-col gap-y-2 items-start">
-                <label className="text-white" htmlFor="email">
+            <p className="">We are happy to hear from you</p>
+            <form
+              className="text-[#111827] flex flex-col gap-y-4"
+              method="POST"
+            >
+              <div className="mb-4">
+                <label
+                  className="block text-sm font-semibold mb-2 text-[#F5F5F5]"
+                  htmlFor="name"
+                >
+                  Name
+                </label>
+                <input
+                  className="w-full px-4 py-2 border rounded-md"
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                />
+              </div>
+              <div className="mb-4">
+                <label
+                  className="block text-sm font-semibold mb-2 text-[#F5F5F5]"
+                  htmlFor="email"
+                >
                   Email
                 </label>
                 <input
+                  className="w-full px-4 py-2 border rounded-md"
                   type="email"
-                  name="email"
                   id="email"
-                  placeholder="example@email.com"
-                  className="focus:ring-0 p-2 min-w-[100%] max-w-[400px]"
+                  name="email"
+                  required
                 />
               </div>
-              <div className="flex flex-col gap-y-2 items-start">
-                <label className="text-white" htmlFor="msg">
+              <div className="mb-4">
+                <label
+                  className="block text-sm font-semibold mb-2 text-[#F5F5F5]"
+                  htmlFor="message"
+                >
                   Message
                 </label>
                 <textarea
-                  name="msg"
-                  id="msg"
-                  minLength={300}
-                  maxLength={2000}
-                  placeholder="Enter your message..."
-                  className="max-h-[200px] min-h-[200px] min-w-[100%] max-w-[400px] p-2"
+                  className="w-full px-4 py-2 border rounded-md"
+                  id="message"
+                  name="message"
+                  rows={4}
+                  required
                 ></textarea>
               </div>
-
               <button
-                disabled
-                className="bg-[#F0A500] hover:bg-[#F0A500]/80 rounded-md px-4 py-2 text-[#000] w-full sm:w-1/3"
+                className="w-full bg-[#F0A500] text-[#111827] px-4 py-2 rounded-md hover:bg-[#F0A500]/70"
+                type="submit"
               >
-                Send
+                Send Message
               </button>
+              {/* </form>
+              </div> */}
             </form>
           </div>
         </div>

@@ -57,14 +57,14 @@ export default function Hero({
 
       <motion.h2
         variants={itemVariants}
-        className="text-3xl sm:text-4xl font-bold mb-4 relative"
+        className="text-2xl sm:text-4xl font-bold mb-4 relative"
       >
         {title}
       </motion.h2>
 
       <motion.p
         variants={itemVariants}
-        className="text-center text-xl leading-normal w-2/3 relative"
+        className="px-2 text-center sm:text-xl leading-normal sm:w-2/3 relative"
       >
         {description}
       </motion.p>
