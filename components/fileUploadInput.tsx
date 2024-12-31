@@ -16,15 +16,6 @@ interface FileUploadInputProps {
 }
 
 const MAX_FILE_SIZE = 30 * 1024 * 1024; // 30MB
-// const ACCEPTED_FILE_TYPES = [
-//   "image/jpeg",
-//   "image/jpg",
-//   "image/png",
-//   "image/webp",
-//   "application/pdf",
-//   "application/msword",
-//   "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-// ];
 
 export function FileUploadInput({ field }: FileUploadInputProps) {
   const onDrop = useCallback(
