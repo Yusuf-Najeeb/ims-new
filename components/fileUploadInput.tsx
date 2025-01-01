@@ -88,7 +88,6 @@ export function FileUploadInput({ field }: FileUploadInputProps) {
           ))}
         </ul>
       )}
-      <p className="text-muted-foreground text-sm mt-2">Up to 30MB</p>
       <FormMessage />
     </FormItem>
   );

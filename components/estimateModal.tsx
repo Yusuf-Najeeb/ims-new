@@ -341,14 +341,15 @@ export default function EstimateModal({ open, onClose }: DialogProps) {
               name="files"
               render={({ field }) => <FileUploadInput field={field} />}
             />
-
-            <Button
-              type="submit"
-              disabled={isSubmitting}
-              className="sm:w-[20%] bg-[#F0A500] hover:bg-[#F0A500]/80 text-[#111837] transition"
-            >
-              {isSubmitting ? "Submitting..." : "Submit"}
-            </Button>
+            <div className="flex justify-end">
+              <Button
+                type="submit"
+                disabled={isSubmitting}
+                className="sm:w-[20%] bg-[#F0A500] hover:bg-[#F0A500]/80 text-[#111837] transition"
+              >
+                {isSubmitting ? "Please wait..." : "Submit"}
+              </Button>
+            </div>
           </form>
         </Form>
       </DialogContent>
