@@ -2,7 +2,7 @@ export default function AllServices() {
   return (
     <section
       className="relative py-8 px-4 sm:px-8 bg-[#F5F5F5] text-[#F5F5F5] text-center mb-6"
-      style={{ backgroundImage: "url('/backgd.png');" }}
+      style={{ backgroundImage: "url('/backgd.png')" }}
     >
       <div className="absolute inset-0 bg-[#F0A500]/10"></div>
       <h2 className="text-3xl sm:text-4xl font-bold mb-2">All Services</h2>

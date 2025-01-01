@@ -10,7 +10,7 @@ export default function Hero() {
     <section
       className="w-full h-[90vh] sm:h-[80vh] lg:h-screen relative flex flex-col justify-center px-4 sm:px-8 gap-8 bg-no-repeat bg-cover bg-center"
       style={{
-        backgroundImage: "url('/backgd.png');",
+        backgroundImage: "url('/backgd.png')",
       }}
     >
       <div className="absolute inset-0 bg-[#F0A500]/10"></div>

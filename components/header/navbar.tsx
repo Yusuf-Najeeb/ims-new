@@ -161,7 +161,7 @@ export const Navbar = () => {
                 </Button>
               </motion.div>
             )}
-            <Link href="/" className="cursor-pointer">
+            <Link href="/" className="cursor-pointer self-center mx-auto">
               <Image
                 src={LogoWhite.src}
                 alt="IMS Company Logo"
