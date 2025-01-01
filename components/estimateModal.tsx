@@ -1,5 +1,4 @@
 "use client";
-
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -123,7 +122,7 @@ export default function EstimateModal({ open, onClose }: DialogProps) {
     <Dialog open={open} onOpenChange={onClose}>
       <DialogContent className="max-w-[800px] max-h-[80vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle>Project estimate request form</DialogTitle>
+          <DialogTitle>Project Estimate</DialogTitle>
         </DialogHeader>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
@@ -289,7 +288,7 @@ export default function EstimateModal({ open, onClose }: DialogProps) {
               name="serviceType"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Select project type</FormLabel>
+                  <FormLabel>Project Type</FormLabel>
                   <Select onValueChange={field.onChange} value={field.value}>
                     <FormControl>
                       <SelectTrigger>
@@ -313,7 +312,7 @@ export default function EstimateModal({ open, onClose }: DialogProps) {
               name="description"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Description of the Project</FormLabel>
+                  <FormLabel>Project Description</FormLabel>
                   <FormControl>
                     <Textarea placeholder="Describe your project" {...field} />
                   </FormControl>

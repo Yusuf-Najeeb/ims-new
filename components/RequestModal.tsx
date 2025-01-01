@@ -1,4 +1,9 @@
+"use client";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import * as z from "zod";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -6,315 +11,358 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { format } from "date-fns";
+import DatePicker from "@/components/datePicker";
+import { FileUploadInput } from "@/components/fileUploadInput";
+
+const MAX_FILE_SIZE = 30 * 1024 * 1024; // 30MB
+const ACCEPTED_FILE_TYPES = [
+  "image/jpeg",
+  "image/jpg",
+  "image/png",
+  "image/webp",
+  "application/pdf",
+  "application/msword",
+  "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+];
+
+const formSchema = z.object({
+  name: z.string().min(2, "Name must be at least 2 characters"),
+  phone: z.string().min(10, "Phone number must be at least 10 digits"),
+  email: z.string().email("Invalid email address"),
+  address: z.string().min(2, "Address must be at least 2 characters"),
+  city: z.string().min(2, "City must be at least 2 characters"),
+  state: z.string().min(2, "State must be at least 2 characters"),
+  followUpCall: z.string().min(2, "Please select a service type"),
+  serviceType: z.string().min(2, "Please select a service type"),
+  description: z.string().min(2, "Description must be at least 2 characters"),
+  appointmentDate: z.date(),
+  contactTime: z.date(),
+  comments: z.string().optional(),
+  files: z.array(
+    z
+      .any()
+      .refine((file) => file instanceof File, "Expected a File object")
+      .refine(
+        (file) => file.size <= MAX_FILE_SIZE,
+        "File size should be less than 30MB"
+      )
+      .refine(
+        (file) => ACCEPTED_FILE_TYPES.includes(file.type),
+        "Only .jpg, .jpeg, .png, .webp, .pdf, .doc and .docx files are accepted."
+      )
+  ),
+});
+
+type FormSchema = z.infer<typeof formSchema>;
+
+const services = [
+  { type: "electrical", name: " Electrical Installations" },
+  { type: "solar", name: "Solar System Installation" },
+  { type: "sound", name: "Sound System Installation" },
+  { type: "maintenance", name: "Maintenance (All Kinds)" },
+  { type: "others", name: "Other (Please specify)" },
+];
+
 interface DialogProps {
   open: boolean;
   onClose: (open: boolean) => void;
 }
-export default function RequestModal({ open, onClose }: DialogProps) {
-  const [formData, setFormData] = useState({
-    name: "",
-    phone: "",
-    email: "",
-    address: "",
-    city: "",
-    state: "",
-    serviceType: "",
-    description: "",
-    appointmentDate: "",
-    appointmentTime: "",
-    availability: "",
-    comments: "",
-    files: null,
+
+export default function ServiceModal({ open, onClose }: DialogProps) {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const form = useForm<FormSchema>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      name: "",
+      phone: "",
+      email: "",
+      address: "",
+      city: "",
+      state: "",
+      followUpCall: "",
+      serviceType: "",
+      description: "",
+      appointmentDate: new Date(),
+      contactTime: new Date(),
+      comments: "",
+      files: [],
+    },
   });
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+  async function onSubmit(data: FormSchema) {
+    setIsSubmitting(true);
+    console.log("Form submitted:", data);
+    // Here you would typically send the data to your server
+    await new Promise((resolve) => setTimeout(resolve, 2000)); // Simulating API call
+    setIsSubmitting(false);
+  }
 
-  const handleFileChange = (e) => {
-    setFormData({ ...formData, files: e.target.files });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission logic (e.g., send data to server)
-    console.log("Form submitted:", formData);
-  };
   return (
     <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent className="max-w-[800px] h-[80vh] overflow-y-auto">
+      <DialogContent className="max-w-[800px] max-h-[80vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle>Service Request Form</DialogTitle>
+          <DialogTitle>Service Request</DialogTitle>
         </DialogHeader>
-        <form
-          onSubmit={handleSubmit}
-          className="p-8 bg-white shadow-md rounded-lg space-y-4"
-        >
-          <div className="flex flex-col sm:flex-row gap-4">
-            {/* Name */}
-            <div className="flex-1">
-              <label
-                className="block text-sm font-semibold mb-2"
-                htmlFor="name"
-              >
-                Full Name
-              </label>
-              <input
-                className="w-full px-4 py-2 border rounded-md"
-                type="text"
-                id="name"
-                name="name"
-                value={formData.name}
-                onChange={handleChange}
-                required
-              />
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+            {/* Personal Info */}
+            <div className="flex flex-col sm:flex-row gap-4 w-full">
+              <div className="flex-1">
+                <FormField
+                  control={form.control}
+                  name="name"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Full Name</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Enter full name" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+              <div className="flex-1">
+                <FormField
+                  control={form.control}
+                  name="email"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Email</FormLabel>
+                      <FormControl>
+                        <Input placeholder="example@gmail.com" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+              <div className="flex-1">
+                <FormField
+                  control={form.control}
+                  name="phone"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Phone</FormLabel>
+                      <FormControl>
+                        <Input placeholder="+234 2342 2334" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+            </div>
+            {/* Contact Info */}
+            <div className="flex flex-col sm:flex-row gap-4 w-full">
+              <div className="flex-1">
+                <FormField
+                  control={form.control}
+                  name="address"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Address</FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="Where your project is..."
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+              <div className="flex-1">
+                <FormField
+                  control={form.control}
+                  name="city"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>City</FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="Which city is your project located..."
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+              <div className="flex-1">
+                <FormField
+                  control={form.control}
+                  name="state"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>State/Province</FormLabel>
+                      <FormControl>
+                        <Input placeholder="Tell us your state" {...field} />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
             </div>
 
-            {/* Phone */}
-            <div className="flex-1">
-              <label
-                className="block text-sm font-semibold mb-2"
-                htmlFor="phone"
-              >
-                Phone Number
-              </label>
-              <input
-                className="w-full px-4 py-2 border rounded-md"
-                type="text"
-                id="phone"
-                name="phone"
-                value={formData.phone}
-                onChange={handleChange}
-                required
-              />
-            </div>
-
-            {/* Email */}
-            <div className="flex-1">
-              <label
-                className="block text-sm font-semibold mb-2"
-                htmlFor="email"
-              >
-                Email Address
-              </label>
-              <input
-                className="w-full px-4 py-2 border rounded-md"
-                type="email"
-                id="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                required
-              />
-            </div>
-          </div>
-
-          {/* Address */}
-          <div className="flex flex-col sm:flex-row gap-4">
-            <div className="flex-1">
-              <label
-                className="block text-sm font-semibold mb-2"
-                htmlFor="address"
-              >
-                Street Address
-              </label>
-              <input
-                className="w-full px-4 py-2 border rounded-md"
-                type="text"
-                id="address"
-                name="address"
-                value={formData.address}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div className="flex-1">
-              <label
-                className="block text-sm font-semibold mb-2"
-                htmlFor="city"
-              >
-                City
-              </label>
-              <input
-                className="w-full px-4 py-2 border rounded-md"
-                type="text"
-                id="city"
-                name="city"
-                value={formData.city}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div className="flex-1">
-              <label
-                className="block text-sm font-semibold mb-2"
-                htmlFor="state"
-              >
-                State/Province
-              </label>
-              <input
-                className="w-full px-4 py-2 border rounded-md"
-                type="text"
-                id="state"
-                name="state"
-                value={formData.state}
-                onChange={handleChange}
-                required
-              />
-            </div>
-          </div>
-
-          {/* Type of Service Needed */}
-          <div>
-            <label
-              className="block text-sm font-semibold mb-2"
-              htmlFor="serviceType"
-            >
-              Type of Service Needed
-            </label>
-            <select
-              className="w-full px-4 py-2 border rounded-md"
-              id="serviceType"
+            <FormField
+              control={form.control}
               name="serviceType"
-              value={formData.serviceType}
-              onChange={handleChange}
-              required
-            >
-              <option value="">Select a service</option>
-              <option value="electricalInstallations">
-                Electrical Installations
-              </option>
-              <option value="solarSystemInstallation">
-                Solar System Installation
-              </option>
-              <option value="soundSystemInstallation">
-                Sound System Installation
-              </option>
-              <option value="securitySystems">Security Systems</option>
-              <option value="electricalMaintenance">
-                Electrical Maintenance
-              </option>
-              <option value="other">Other (Please specify)</option>
-            </select>
-          </div>
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Project Type</FormLabel>
+                  <Select onValueChange={field.onChange} value={field.value}>
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select service type" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      {services.map((service) => (
+                        <SelectItem key={service.name} value={service.type}>
+                          {service.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-          {/* Description */}
-          <div>
-            <label
-              className="block text-sm font-semibold mb-2"
-              htmlFor="description"
-            >
-              Description of Issue or Request
-            </label>
-            <textarea
-              className="w-full px-4 py-2 border rounded-md"
-              id="description"
+            <FormField
+              control={form.control}
               name="description"
-              rows={4}
-              value={formData.description}
-              onChange={handleChange}
-              required
-            ></textarea>
-          </div>
-
-          {/* Preferred Appointment Date and Time */}
-          <div className="flex flex-col sm:flex-row gap-4">
-            <div className="flex-1">
-              <label
-                className="block text-sm font-semibold mb-2"
-                htmlFor="appointmentDate"
-              >
-                Preferred Appointment Date
-              </label>
-              <input
-                className="w-full px-4 py-2 border rounded-md"
-                type="date"
-                id="appointmentDate"
-                name="appointmentDate"
-                value={formData.appointmentDate}
-                onChange={handleChange}
-                required
-              />
-            </div>
-            <div className="flex-1">
-              <label
-                className="block text-sm font-semibold mb-2"
-                htmlFor="appointmentTime"
-              >
-                Preferred Appointment Time
-              </label>
-              <input
-                className="w-full px-4 py-2 border rounded-md"
-                type="time"
-                id="appointmentTime"
-                name="appointmentTime"
-                value={formData.appointmentTime}
-                onChange={handleChange}
-                required
-              />
-            </div>
-          </div>
-
-          {/* Availability */}
-          <div>
-            <label
-              className="block text-sm font-semibold mb-2"
-              htmlFor="availability"
-            >
-              Availability for Follow-up Call
-            </label>
-            <input
-              className="w-full px-4 py-2 border rounded-md"
-              type="text"
-              id="availability"
-              name="availability"
-              value={formData.availability}
-              onChange={handleChange}
-              required
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Describe the Issue or Service</FormLabel>
+                  <FormControl>
+                    <Textarea placeholder="Describe your project" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
             />
-          </div>
+            {/* Service details */}
+            <div className="flex flex-col sm:flex-row gap-4 w-full">
+              <div className="flex-1">
+                <FormField
+                  control={form.control}
+                  name="appointmentDate"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Preferred Appointment Date</FormLabel>
+                      <FormControl>
+                        <DatePicker
+                          date={format(field.value, "PPP")}
+                          setDate={field.onChange}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+              <div className="flex-1">
+                <FormField
+                  control={form.control}
+                  name="followUpCall"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Available for Follow-up call?</FormLabel>
+                      <Select
+                        onValueChange={field.onChange}
+                        value={field.value}
+                      >
+                        <FormControl>
+                          <SelectTrigger>
+                            <SelectValue placeholder="State your availability" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          <SelectItem value="no">No</SelectItem>
+                          <SelectItem value="yes">Yes</SelectItem>
+                          <SelectItem value="maybe">Maybe</SelectItem>
+                        </SelectContent>
+                      </Select>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+              <div className="flex-1">
+                <FormField
+                  control={form.control}
+                  name="contactTime"
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Best Time to Contact You</FormLabel>
+                      <FormControl>
+                        <DatePicker
+                          date={format(field.value, "PPP")}
+                          setDate={field.onChange}
+                        />
+                      </FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+              </div>
+            </div>
 
-          {/* Additional Comments */}
-          <div>
-            <label
-              className="block text-sm font-semibold mb-2"
-              htmlFor="comments"
-            >
-              Additional Comments
-            </label>
-            <textarea
-              className="w-full px-4 py-2 border rounded-md"
-              id="comments"
+            <FormField
+              control={form.control}
               name="comments"
-              rows={4}
-              value={formData.comments}
-              onChange={handleChange}
-            ></textarea>
-          </div>
-
-          {/* Upload Photos or Documents */}
-          <div>
-            <label className="block text-sm font-semibold mb-2" htmlFor="files">
-              Upload Photos or Documents (Optional)
-            </label>
-            <input
-              className="w-full px-4 py-2 border rounded-md"
-              type="file"
-              id="files"
-              name="files"
-              onChange={handleFileChange}
-              multiple
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Additional Comment</FormLabel>
+                  <FormControl>
+                    <Textarea
+                      placeholder="You can add any additional comments"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
             />
-          </div>
+            <FormField
+              control={form.control}
+              name="files"
+              render={({ field }) => <FileUploadInput field={field} />}
+            />
 
-          <button
-            className="w-full bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-700"
-            type="submit"
-          >
-            Submit Request
-          </button>
-        </form>
+            <Button
+              type="submit"
+              disabled={isSubmitting}
+              className="sm:w-[20%] bg-[#F0A500] hover:bg-[#F0A500]/80 text-[#111837] transition"
+            >
+              {isSubmitting ? "Submitting..." : "Submit"}
+            </Button>
+          </form>
+        </Form>
       </DialogContent>
     </Dialog>
   );
