@@ -6,9 +6,9 @@ import { PhoneIncoming, Mail, MapPinHouse } from "lucide-react";
 
 export default function ContactUs() {
   const [isOpen, setOpen] = useState(false);
-
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
   return (
     <section className="p-8 bg-[#F5F5F5] text-[#111827]">
       <div className="max-w-7xl mx-auto">
