@@ -27,7 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${raleway.variable} ${robotoMono.variable} antialiased`}
+        className={`${raleway.variable} ${robotoMono.variable} antialiased max-w-[1400px] mx-auto`}
       >
         <Navbar />
         {children}

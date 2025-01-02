@@ -74,10 +74,11 @@ body {
 @media screen and (orientation: landscape) {
   .hero_image {
     height: 100% !important;
+    min-height: 70vh;
     color: burlywood !important;
-    padding: 2rem 0;
+    padding: 4rem 0;
   }
   .about_img {
-    height: 80vh !important;
+    height: 70vh !important;
   }
 }
