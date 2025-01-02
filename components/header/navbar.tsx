@@ -157,7 +157,7 @@ export const Navbar = () => {
                   size="icon"
                   onClick={() => setOpen(true)}
                 >
-                  <AlignLeft className="text-[#F0A500] cursor-pointer w-[2rem] h-[2rem]" />
+                  <AlignLeft className="w-8 h-8 text-[#F0A500] cursor-pointer" />
                 </Button>
               </motion.div>
             )}
