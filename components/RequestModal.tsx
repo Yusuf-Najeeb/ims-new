@@ -28,7 +28,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { format } from "date-fns";
 import DatePicker from "@/components/datePicker";
 import { FileUploadInput } from "@/components/fileUploadInput";
 
@@ -276,7 +275,7 @@ export default function ServiceModal({ open, onClose }: DialogProps) {
                       <FormLabel>Preferred Appointment Date</FormLabel>
                       <FormControl>
                         <DatePicker
-                          date={format(field.value, "PPP")}
+                          date={field.value}
                           setDate={field.onChange}
                         />
                       </FormControl>
@@ -321,7 +320,7 @@ export default function ServiceModal({ open, onClose }: DialogProps) {
                       <FormLabel>Best Time to Contact You</FormLabel>
                       <FormControl>
                         <DatePicker
-                          date={format(field.value, "PPP")}
+                          date={field.value}
                           setDate={field.onChange}
                         />
                       </FormControl>
