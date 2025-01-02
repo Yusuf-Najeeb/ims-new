@@ -28,7 +28,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { format } from "date-fns";
+// import { format } from "date-fns";
 import DatePicker from "@/components/datePicker";
 import { FileUploadInput } from "@/components/fileUploadInput";
 
@@ -239,7 +239,7 @@ export default function EstimateModal({ open, onClose }: DialogProps) {
                       <FormLabel>Start Date</FormLabel>
                       <FormControl>
                         <DatePicker
-                          date={format(field.value, "PPP")}
+                          date={field.value}
                           setDate={field.onChange}
                         />
                       </FormControl>
@@ -272,7 +272,7 @@ export default function EstimateModal({ open, onClose }: DialogProps) {
                       <FormLabel>Best Time to Contact You</FormLabel>
                       <FormControl>
                         <DatePicker
-                          date={format(field.value, "PPP")}
+                          date={field.value}
                           setDate={field.onChange}
                         />
                       </FormControl>
