@@ -5,7 +5,7 @@ import { useState } from "react";
 // *Third-party Imports
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
-import { MapPinCheck, PhoneCall, Menu, X } from "lucide-react";
+import { MapPinCheck, PhoneCall, AlignLeft, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import RequestModal from "@/components/RequestModal";
 import Link from "next/link";
@@ -127,7 +127,7 @@ export const Navbar = () => {
         </AnimatePresence>
 
         <AnimatePresence mode="wait">
-          <div className="bg-[#2D4AF0] px-4 w-full flex items-center">
+          <div className="bg-[#2D4AF0]/80 py-2 px-4 w-full flex items-center">
             {isOpen ? (
               <motion.div
                 key="close"
@@ -136,13 +136,10 @@ export const Navbar = () => {
                 exit={{ opacity: 0, scale: 0.8 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
-                <Button
-                  variant="ghost"
-                  size="icon"
+                <X
                   onClick={() => setOpen(false)}
-                >
-                  <X className="w-8 h-8 text-[#F0A500]" />
-                </Button>
+                  className="w-8 h-8 text-[#F0A500] cursor-pointer"
+                />
               </motion.div>
             ) : (
               <motion.div
@@ -152,13 +149,10 @@ export const Navbar = () => {
                 exit={{ opacity: 0, scale: 0.8 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
-                <Button
-                  variant="ghost"
-                  size="icon"
+                <AlignLeft
                   onClick={() => setOpen(true)}
-                >
-                  <Menu className="w-50 h-50 text-[#F0A500]" size={30} />
-                </Button>
+                  className="w-full h-full text-[#F0A500] cursor-pointer"
+                />
               </motion.div>
             )}
             <Link href="/" className="cursor-pointer self-center mx-auto">
@@ -194,6 +188,7 @@ export const Navbar = () => {
                     }
                     return (
                       <li
+                        onClick={() => setOpen(false)}
                         key={link.title}
                         className={`${
                           currentPath && "bg-[#F0A500] font-semibold"

@@ -40,7 +40,7 @@ const MemberCard = ({ team }: { team: TeamCardProps }) => {
           className="object-cover rounded-t-2xl"
         />
         <figcaption className="absolute -bottom-4 bg-[#F0A500] p-2 min-w-[60%] max-w-[75%] rounded-md text-center translate-x-[10%]">
-          <h3 className="text-[#111827] font-semibold text-xl">{team.name}</h3>
+          <h3 className="text-[#111827] font-semibold">{team.name}</h3>
         </figcaption>
       </figure>
       <p className="text-[#4b5563] flex items-center gap-2">
@@ -61,7 +61,7 @@ export default function Teams() {
         Our Team
       </h2>
       <p className="text-center text-[#4b5563]">
-        Meet the Experts Behind Our Success
+        Meet the Great Minds Behind Our Success
       </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
         {teams.map((member) => {

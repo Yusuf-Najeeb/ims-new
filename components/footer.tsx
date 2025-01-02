@@ -21,7 +21,7 @@ const Footer = () => {
           className="absolute top-10 sm:top-0"
         />
 
-        <div className="relative z-20 px-4 sm:px-8 w-full flex flex-col md:flex-row md:justify-between md:items-center py-8 space-y-12 sm:space-y-0">
+        <div className="relative z-20 px-4 sm:px-8 w-full flex flex-col md:flex-row md:justify-between md:items-center gap-y-8 py-8 space-y-12 sm:space-y-0">
           <div className="flex flex-col items-start justify-start gap-y-4 w-full md:w-[40%]">
             <Image
               src={Logo.src}

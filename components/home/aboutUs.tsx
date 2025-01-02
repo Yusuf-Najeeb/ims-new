@@ -4,8 +4,8 @@ import Link from "next/link";
 import Engineer from "../../public/backgd.png";
 export default function AboutUs() {
   return (
-    <section className="flex flex-col-reverse sm:flex-row items-center gap-x-8 gap-y-4 py-8 px-4 sm:px-8">
-      <div className="w-full sm:w-3/5">
+    <section className="flex flex-col-reverse sm:flex-row md:items-center gap-x-8 gap-y-4 py-8 px-4 sm:px-8">
+      <div className="w-full md:w-3/5">
         <h2 className="text-[#111827] text-center sm:text-left text-4xl font-bold">
           About us
         </h2>
@@ -29,7 +29,7 @@ export default function AboutUs() {
           <Link href="/about">Read More</Link>
         </Button>
       </div>
-      <div className="w-full sm:w-2/5 h-[40vh] sm:h-full">
+      <div className="w-full md:w-2/5 h-[40vh] md:h-full about_img">
         <Image
           src={Engineer.src}
           alt="Temporary"

@@ -49,14 +49,14 @@ export default function Projects() {
       </h2>
       <Slider {...sliderSettings}>
         {projects.map((project, index) => (
-          <div key={index} className="px-1">
-            <div className="text-center flex flex-col items-center gap-y-2 w-full h-[30vh] sm:h-[80vh]">
+          <div key={index} className="">
+            <div className="text-center flex flex-col items-center gap-y-2 w-full h-[45vh] sm:h-[90vh]">
               <Image
                 src={project.image}
                 alt={project.alt}
                 width={1000}
                 height={1000}
-                className="w-[90%] h-full rounded-2xl drop-shadow-md"
+                className="sm:w-[95%] h-full rounded drop-shadow-md object-cover"
               />
             </div>
           </div>

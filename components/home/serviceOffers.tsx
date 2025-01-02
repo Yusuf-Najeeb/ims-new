@@ -81,7 +81,7 @@ export default function Offers() {
         <Slider {...sliderSettings}>
           {services.map((service, index) => (
             <div key={index} className="px-1">
-              <div className="bg-white rounded-2xl shadow-md p-6 text-center flex flex-col items-center gap-y-2">
+              <div className="bg-white rounded-2xl shadow-md p-6 text-center flex flex-col items-center gap-y-2 mb-4 md:mb-0 min-h-[370px] sm:h-full">
                 <div className="mb-4">{service.icon}</div>
                 <h3 className="text-xl font-bold mb-2">{service.title}</h3>
                 <p className="text-gray-600">{service.description}</p>
