@@ -136,9 +136,13 @@ export const Navbar = () => {
                 exit={{ opacity: 0, scale: 0.8 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
-                <button role="button" onClick={() => setOpen(false)}>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => setOpen(false)}
+                >
                   <X className="w-8 h-8 text-[#F0A500] cursor-pointer" />
-                </button>
+                </Button>
               </motion.div>
             ) : (
               <motion.div
@@ -148,11 +152,16 @@ export const Navbar = () => {
                 exit={{ opacity: 0, scale: 0.8 }}
                 transition={{ type: "spring", stiffness: 300, damping: 20 }}
               >
-                <button role="button" onClick={() => setOpen(true)}>
-                  <AlignLeft className="w-full h-full text-[#F0A500] cursor-pointer" />
-                </button>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => setOpen(true)}
+                >
+                  <AlignLeft className="text-[#F0A500] cursor-pointer w-[2rem] h-[2rem]" />
+                </Button>
               </motion.div>
             )}
+
             <Link href="/" className="cursor-pointer self-center mx-auto">
               <Image
                 src={LogoWhite.src}

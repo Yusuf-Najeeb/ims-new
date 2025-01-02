@@ -5,6 +5,10 @@
 body {
   font-family: "Raleway", "Roboto", sans-serif;
 }
+.\[\&_svg\]\:size-4 svg {
+  width: 2rem !important;
+  height: 2rem !important;
+}
 
 @layer base {
   :root {
