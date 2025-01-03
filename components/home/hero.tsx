@@ -8,7 +8,7 @@ export default function Hero() {
   const handleClose = () => setOpen(false);
   return (
     <section
-      className="hero_image w-full h-[90vh] sm:h-[80vh] lg:h-screen relative flex flex-col justify-center px-4 sm:px-8 gap-8 bg-no-repeat bg-cover bg-center"
+      className="hero_image w-full h-[90vh] sm:h-[90vh] lg:h-screen relative flex flex-col justify-center px-4 sm:px-8 gap-8 bg-no-repeat bg-cover bg-center"
       style={{
         backgroundImage: "url('/backgd.png')",
       }}

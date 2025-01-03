@@ -4,7 +4,7 @@ import Link from "next/link";
 import Engineer from "../../public/backgd.png";
 export default function AboutUs() {
   return (
-    <section className="flex flex-col-reverse sm:flex-row md:items-center gap-x-8 gap-y-4 py-8 px-4 sm:px-8">
+    <section className="flex flex-col-reverse md:flex-row md:items-center gap-x-8 gap-y-4 py-8 px-4 sm:px-8">
       <div className="w-full md:w-3/5">
         <h2 className="text-[#111827] text-center sm:text-left text-4xl font-bold">
           About us

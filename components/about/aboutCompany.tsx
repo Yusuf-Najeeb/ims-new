@@ -10,7 +10,7 @@ import {
 export default function AboutIMS() {
   return (
     <section className="py-8">
-      <div className="flex flex-col-reverse sm:flex-row md:items-center gap-x-8 gap-y-4  px-4 sm:px-8">
+      <div className="flex flex-col-reverse md:flex-row md:items-center gap-x-8 gap-y-4  px-4 sm:px-8">
         <div className="w-full md:w-3/5">
           <h2 className="text-[#111827] text-center sm:text-left text-4xl font-bold">
             Our Culture

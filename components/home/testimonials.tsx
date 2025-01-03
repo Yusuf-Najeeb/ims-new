@@ -15,21 +15,35 @@ const testimonials: TestimonialProps[] = [
     user: "Engr. Musa Lawal",
     title: "Electrical Engineer",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel expedita quia aperiam ad aut ullam quis eius debitis quod itaque. Placeat consectetur aliquam sint pariatur cupiditate molestiae repudiandae distinctio dolore.",
+      "I've never had a more seamless experience with any service provider. The electricians at IMS Electricals are not only experts in their field but also incredibly professional and courteous. They quickly identified and fixed the issue in my home, and I couldn't be happier with the results.",
   },
   {
     image: "/backgd.png",
-    user: "Engr. Musa Lawal",
-    title: "Electrical Engineer",
+    user: "Arch. Olubunmi O",
+    title: "Architect",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel expedita quia aperiam ad aut ullam quis eius debitis quod itaque. Placeat consectetur aliquam sint pariatur cupiditate molestiae repudiandae distinctio dolore.",
+      "The consultation services provided by IMS Electricals were top-notch. They took the time to understand my specific needs and offered practical, affordable solutions that exceeded my expectations. Highly recommended!",
   },
   {
     image: "/backgd.png",
-    user: "Engr. Musa Lawal",
-    title: "Electrical Engineer",
+    user: "Mr. Fatiu Mubarak",
+    title: "Production Manager",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel expedita quia aperiam ad aut ullam quis eius debitis quod itaque. Placeat consectetur aliquam sint pariatur cupiditate molestiae repudiandae distinctio dolore.",
+      "I reached out to the company for a consultation on upgrading the electrical system in my office. The team was thorough, knowledgeable, and provided clear, actionable advice. Their expertise and attention to detail were evident throughout the entire process.",
+  },
+  {
+    image: "/backgd.png",
+    user: "Ms. Linda Marcella",
+    title: "Teacher",
+    description:
+      "From start to finish, my experience with IMS Electricals was fantastic. They were prompt, efficient, and the consultation gave me peace of mind knowing that my electrical system was in good hands. I will definitely be using their services again in the future.",
+  },
+  {
+    image: "/backgd.png",
+    user: "Dr. Samuel Luigi",
+    title: "Surgeon",
+    description:
+      "I was impressed with the level of service and professionalism displayed by this company. The consultation helped me understand the best options for my electrical needs, and I felt confident in the recommendations they provided. Truly outstanding service!",
   },
 ];
 export default function Testimonials() {
